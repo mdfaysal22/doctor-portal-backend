@@ -12,35 +12,39 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.specializationServices = void 0;
+exports.availableDoctorServices = void 0;
 const prisma_client_1 = __importDefault(require("../../lib/prisma.client"));
-const createSpecialization = (data) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield prisma_client_1.default.specialization.create({
+const createAvailableDoctor = (data) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield prisma_client_1.default.availableDoctor.create({
         data
     });
     return result;
 });
-const getSpecializations = () => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield prisma_client_1.default.specialization.findMany({
+const getAvailableDoctors = () => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield prisma_client_1.default.availableDoctor.findMany({
         include: {
-            doctors: true
+            doctor: true,
+            timeSlot: true,
+            availableServices: true
         }
     });
     return result;
 });
-const getSpecialization = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield prisma_client_1.default.specialization.findUnique({
+const getAvailableDoctor = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield prisma_client_1.default.availableDoctor.findUnique({
         where: {
             id
         },
         include: {
-            doctors: true
+            doctor: true,
+            timeSlot: true,
+            availableServices: true
         }
     });
     return result;
 });
-const updateSpecialization = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield prisma_client_1.default.specialization.update({
+const updateAvailableDoctor = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield prisma_client_1.default.availableDoctor.update({
         where: {
             id
         },
@@ -48,18 +52,18 @@ const updateSpecialization = (id, payload) => __awaiter(void 0, void 0, void 0, 
     });
     return result;
 });
-const deleteSpecialization = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield prisma_client_1.default.specialization.delete({
+const deleteAvailableDoctor = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield prisma_client_1.default.availableDoctor.delete({
         where: {
             id
         }
     });
     return result;
 });
-exports.specializationServices = {
-    createSpecialization,
-    getSpecializations,
-    getSpecialization,
-    updateSpecialization,
-    deleteSpecialization
+exports.availableDoctorServices = {
+    createAvailableDoctor,
+    getAvailableDoctor,
+    getAvailableDoctors,
+    updateAvailableDoctor,
+    deleteAvailableDoctor
 };

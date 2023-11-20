@@ -12,35 +12,28 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.specializationServices = void 0;
+exports.adminServices = void 0;
 const prisma_client_1 = __importDefault(require("../../lib/prisma.client"));
-const createSpecialization = (data) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield prisma_client_1.default.specialization.create({
+const createAdmin = (data) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield prisma_client_1.default.admin.create({
         data
     });
     return result;
 });
-const getSpecializations = () => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield prisma_client_1.default.specialization.findMany({
-        include: {
-            doctors: true
-        }
-    });
+const getAdmins = () => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield prisma_client_1.default.admin.findMany();
     return result;
 });
-const getSpecialization = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield prisma_client_1.default.specialization.findUnique({
+const getAdmin = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield prisma_client_1.default.admin.findUnique({
         where: {
             id
-        },
-        include: {
-            doctors: true
         }
     });
     return result;
 });
-const updateSpecialization = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield prisma_client_1.default.specialization.update({
+const updateAdmin = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield prisma_client_1.default.admin.update({
         where: {
             id
         },
@@ -48,18 +41,18 @@ const updateSpecialization = (id, payload) => __awaiter(void 0, void 0, void 0, 
     });
     return result;
 });
-const deleteSpecialization = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield prisma_client_1.default.specialization.delete({
+const deleteAdmin = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield prisma_client_1.default.admin.delete({
         where: {
             id
         }
     });
     return result;
 });
-exports.specializationServices = {
-    createSpecialization,
-    getSpecializations,
-    getSpecialization,
-    updateSpecialization,
-    deleteSpecialization
+exports.adminServices = {
+    createAdmin,
+    getAdmins,
+    getAdmin,
+    updateAdmin,
+    deleteAdmin
 };

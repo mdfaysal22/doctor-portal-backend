@@ -12,35 +12,33 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.specializationServices = void 0;
+exports.servicesService = void 0;
 const prisma_client_1 = __importDefault(require("../../lib/prisma.client"));
-const createSpecialization = (data) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield prisma_client_1.default.specialization.create({
+const createServices = (data) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield prisma_client_1.default.service.create({
         data
     });
     return result;
 });
-const getSpecializations = () => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield prisma_client_1.default.specialization.findMany({
+const getServices = () => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield prisma_client_1.default.service.findMany({
         include: {
-            doctors: true
+            specialization: true
         }
     });
     return result;
 });
-const getSpecialization = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield prisma_client_1.default.specialization.findUnique({
-        where: {
-            id
-        },
+const getService = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield prisma_client_1.default.service.findUnique({
+        where: { id },
         include: {
-            doctors: true
+            specialization: true
         }
     });
     return result;
 });
-const updateSpecialization = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield prisma_client_1.default.specialization.update({
+const updateService = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield prisma_client_1.default.service.update({
         where: {
             id
         },
@@ -48,18 +46,18 @@ const updateSpecialization = (id, payload) => __awaiter(void 0, void 0, void 0, 
     });
     return result;
 });
-const deleteSpecialization = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield prisma_client_1.default.specialization.delete({
+const removeService = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield prisma_client_1.default.service.delete({
         where: {
             id
         }
     });
     return result;
 });
-exports.specializationServices = {
-    createSpecialization,
-    getSpecializations,
-    getSpecialization,
-    updateSpecialization,
-    deleteSpecialization
+exports.servicesService = {
+    createServices,
+    getServices,
+    getService,
+    updateService,
+    removeService
 };
